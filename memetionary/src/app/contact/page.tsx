@@ -19,7 +19,7 @@ export default function Contact() {
   const [form, setForm] = useState<Form>();
 
   return (
-    <div className="grid h-screen content-around p-8">
+    <div className="grid h-screen w-full content-around p-8">
       <h2 className="text-3xl font-bold">{'이메일 문의하기'}</h2>
       <div className="grid gap-y-6">
         <Select className={borderStyle} options={CONTACT_OPTIONS} value={form?.option} />
