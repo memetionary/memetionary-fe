@@ -19,7 +19,7 @@ export default function Contact() {
   const [form, setForm] = useState<Form>();
 
   return (
-    <div className="grid h-screen p-8 content-around">
+    <div className="grid h-screen content-around p-8">
       <h2 className="text-3xl font-bold">{'이메일 문의하기'}</h2>
       <div className="grid gap-y-6">
         <Select className={borderStyle} options={CONTACT_OPTIONS} value={form?.option} />
@@ -32,7 +32,7 @@ export default function Contact() {
           showTextLength={true}
         />
       </div>
-      <button className="justify-self-center w-full p-6 rounded-lg bg-violet-800 text-white font-bold">
+      <button className="w-full justify-self-center rounded-lg bg-violet-800 p-6 font-bold text-white">
         {'문의접수'}
       </button>
     </div>

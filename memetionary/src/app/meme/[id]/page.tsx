@@ -37,7 +37,7 @@ const props: MemeProps = {
 export default function Meme() {
   return (
     <>
-      <div className="flex justify-between items-end">
+      <div className="flex items-end justify-between">
         <h2 className="text-3xl font-bold">{props.title}</h2>
         <TitleDetail view={props.view} evaluation={props.evaluation} />
       </div>
@@ -55,7 +55,7 @@ export default function Meme() {
       {props.video && <Video src={props.video} />}
       <Example list={props.example} />
       {props.tags && <TagList list={props.tags} />}
-      <div className="flex justify-between items-end">
+      <div className="flex items-end justify-between">
         <FooterDetail view={props.view} lastUpdate={props.lastUpdate} />
         <DetailAction />
       </div>
