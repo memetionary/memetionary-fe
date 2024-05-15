@@ -11,5 +11,12 @@ export default function Input({ ...props }: InputProps) {
     props?.onChange?.(e);
   };
 
-  return <input {...props} value={value} onChange={handleInput} />;
+  return (
+    <input
+      className="disabled:border-gray text-gray h-10 w-full rounded-md border-2 border-black bg-white px-1.5 text-xs focus:outline-none sm:text-sm"
+      {...props}
+      value={value}
+      onChange={handleInput}
+    />
+  );
 }
