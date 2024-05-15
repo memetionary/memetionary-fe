@@ -1,27 +1,15 @@
-import { ChangeEvent, FocusEvent, KeyboardEvent } from 'react';
+import { ChangeEventHandler, DetailedHTMLProps, InputHTMLAttributes, useState } from 'react';
 
-type TextInputTypes = 'text' | 'email' | 'number' | 'password' | 'search' | 'tel' | 'date' | 'url';
+interface InputProps extends DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {}
 
-interface InputProps {
-  id?: string;
-  name?: string;
-  type?: TextInputTypes;
-  value?: string;
-  defaultValue?: string;
-  placeholder?: string;
-  disabled?: boolean;
-  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
-  onBlur?: (e: FocusEvent<HTMLInputElement>) => void;
-  onKeyPress?: (e: KeyboardEvent<HTMLInputElement>) => void;
+export default function Input({ ...props }: InputProps) {
+  const [value, setValue] = useState('');
+
+  const handleInput: ChangeEventHandler<HTMLInputElement> = (e) => {
+    const { value: newValue } = e.target;
+    setValue(newValue);
+    props?.onChange?.(e);
+  };
+
+  return <input {...props} value={value} onChange={handleInput} />;
 }
-
-const Input = ({ disabled = false, ...props }: InputProps) => {
-  return (
-    <input
-      className="disabled:border-gray text-gray h-10 w-full rounded-md border-2 border-black bg-white px-1.5 text-xs focus:outline-none sm:text-sm "
-      {...props}
-    />
-  );
-};
-
-export default Input;
