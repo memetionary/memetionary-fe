@@ -5,7 +5,7 @@ import { IconEnvelope } from '@/assets/icons';
 export default function DetailAction() {
   const iconStyle = 'flex items-center gap-x-1';
   return (
-    <div className="flex gap-x-2 items-center">
+    <div className="flex items-center gap-x-2">
       <Link href={'/contact'} className={iconStyle}>
         <IconEnvelope width={18} height={18} />
         <span className="text-xs">문의하기</span>

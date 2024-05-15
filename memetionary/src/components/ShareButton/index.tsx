@@ -12,20 +12,20 @@ export default function ShareButton({ ...props }: ShareButtonProps) {
     <details className="group relative cursor-pointer">
       <summary
         // className='list-none outline-none cursor-pointer before:content-["+"] group-open:before:content-["-"] '
-        className={`flex gap-x-1 items-center [&::marker]:hidden [&::-webkit-details-marker]:hidden
-        group-open:before:block group-open:before:content-[" "]
-        group-open:before:fixed group-open:before:right-0 group-open:before:bottom-0 group-open:before:left-0 group-open:before:z-80
-      group-open:before:bg-red-500`}
+        className={`group-open:before:content-[" "] group-open:before:z-80 flex items-center
+        gap-x-1 group-open:before:fixed group-open:before:bottom-0
+        group-open:before:left-0 group-open:before:right-0 group-open:before:block group-open:before:bg-red-500 [&::-webkit-details-marker]:hidden
+      [&::marker]:hidden`}
       >
         <IconShareNodes width={18} height={18} />
         {props.showText && <span className="text-xs">공유하기</span>}
       </summary>
-      <menu className={`absolute right-0 ${posSytle} p-2 border border-solid border-gray-200 rounded-md`}>
+      <menu className={`absolute right-0 ${posSytle} rounded-md border border-solid border-gray-200 p-2`}>
         <ul className="flex items-center gap-x-2">
           <li>
             <IconKakaotalk width={36} height={36} />
           </li>
-          <li className="border border-solid p-2 rounded-full">
+          <li className="rounded-full border border-solid p-2">
             <IconPaperclip width={18} height={18} />
           </li>
         </ul>
