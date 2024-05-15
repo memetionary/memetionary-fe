@@ -1,5 +1,7 @@
+'use client';
+
 import Button from '@/components/Button';
-import { Bad, Good, Logo, Meme, Opinion } from '@/assets/icons';
+import { IconGood, IconLogo, IconMeme, IconOpinion } from '@/assets/icons';
 import Input from '@/components/Input';
 
 export default function Home() {
@@ -7,7 +9,7 @@ export default function Home() {
     <>
       <section className="flex h-fit w-80 min-w-fit flex-col items-center justify-center gap-6 py-16">
         <div className="h-64 min-h-52">
-          <Logo width={'full'} height={'full'} />
+          <IconLogo width={'full'} height={'full'} />
         </div>
         <div className="flex flex-col items-center justify-center gap-2">
           <h2 className="text-2xl font-bold">전 세계의 밈들을 검색해보세요!</h2>
@@ -29,7 +31,7 @@ export default function Home() {
           <p className="whitespace-pre-wrap">{`찾으시는 밈이 저희 사전에 없나요?\n그럼 저희의 AI조수인 미미 에게 물어보세요!\n검색 결과 하단에서 미미가 여러분들을 기다릴거에요!`}</p>
         </div>
         <div className="h-36">
-          <Meme width={'full'} height={'full'} />
+          <IconMeme width={'full'} height={'full'} />
         </div>
       </section>
       <section className="flex h-fit w-full min-w-fit items-center justify-center gap-48 p-10">
@@ -38,12 +40,12 @@ export default function Home() {
           <p className="whitespace-pre-wrap">{`밈이 마음에 드시나요? 그러면 좋아요를 눌러주세요!\n밈이 마음에 안드시나요? 그러면 싫어요를 눌러주세요!\n그리고 어떤 밈의 선호도가 높은지 확인해보세요!`}</p>
         </div>
         <div className="h-36">
-          <Good width={'full'} height={'full'} />
+          <IconGood width={'full'} height={'full'} />
         </div>
       </section>
       <section className="flex h-fit w-80 min-w-fit flex-col items-center justify-center gap-6 py-16">
         <div className=" h-20">
-          <Opinion width={'full'} height={'full'} />
+          <IconOpinion width={'full'} height={'full'} />
         </div>
         <div className="flex flex-col items-center justify-center gap-2">
           <h2 className="text-xl font-bold">밈셔너리에 의견을 보내주세요!</h2>
