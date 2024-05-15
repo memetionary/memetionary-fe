@@ -3,6 +3,7 @@
 import Button from '@/components/Button';
 import { IconGood, IconLogo, IconMeme, IconOpinion } from '@/assets/icons';
 import Input from '@/components/Input';
+import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -52,9 +53,12 @@ export default function Home() {
           <p className="whitespace-pre-wrap text-center">{`밈셔너리는 현재 베타 버전이에요!\n앞으로 더 나은 서비스 제공을 위해 여러분들의 의견을 보내주세요!`}</p>
         </div>
         <div className="flex w-full flex-col items-center gap-2">
-          <Button size="full" variant="outlined">
+          <Link
+            className="flex h-10 w-full items-center justify-center rounded-md border-2 border-primary-300 bg-white text-sm text-primary-300 enabled:hover:border-primary-500 enabled:hover:bg-primary-500 enabled:hover:text-white enabled:active:border-primary-300 enabled:active:bg-primary-300 disabled:bg-neutral-200 disabled:text-neutral-500"
+            href="/contact"
+          >
             의견 보내러가기
-          </Button>
+          </Link>
         </div>
       </section>
     </>
