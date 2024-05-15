@@ -8,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      spacing: {
+        192: '48rem', // 768px
+      },
       colors: {
         primary: {
           50: '#F4EFFA',
