@@ -15,6 +15,10 @@ export default function TextArea({ showTextLength, ...props }: TextAreaProps) {
     props?.onChange?.(e);
   };
 
+  useEffect(() => {
+    setValue(String(props.value ?? ''));
+  }, [props.value]);
+
   return (
     <div className="flex flex-col gap-2">
       <textarea {...props} value={value} onChange={handleTextarea} />
