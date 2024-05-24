@@ -16,14 +16,14 @@ export default function TitleDetail({ ...props }: DetailProps) {
         <IconEyeSolid width={18} height={18} />
         <span className="text-xs">{props.view.toLocaleString()}</span>
       </div>
-      <div className={iconStyle}>
+      {/* <div className={iconStyle}>
         <IconThumbsUp width={18} height={18} />
         <span className="text-xs">{props.evaluation.good.count.toLocaleString()}</span>
       </div>
       <div className={iconStyle}>
         <IconThumbsDown width={18} height={18} />
         <span className="text-xs">{props.evaluation.bad.count.toLocaleString()}</span>
-      </div>
+      </div> */}
       <ShareButton />
     </div>
   );

@@ -11,7 +11,7 @@ export default function Example({ list }: { list: ExampleProps[] }) {
   return (
     <div className="grid gap-y-4">
       <h3 className="text-xl font-bold">사용 예시</h3>
-      <div className="bg-gray-50 px-14 py-8">
+      <div className="rounded-lg bg-gray-100 px-14 py-8 ">
         {list.reverse().map((e) => (
           <div key={e.id} className="flex flex-col">
             <Bubble position={e.name === 'me' ? 'right' : 'left'}>{e.content}</Bubble>
