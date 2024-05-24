@@ -59,7 +59,7 @@ export default function Meme() {
         <FooterDetail view={props.view} lastUpdate={props.lastUpdate} />
         <DetailAction />
       </div>
-      <Evaluation {...props.evaluation} />
+      {/* <Evaluation {...meme.evaluation} /> */}
     </>
   );
 }
