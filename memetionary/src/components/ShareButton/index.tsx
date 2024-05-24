@@ -11,16 +11,15 @@ export default function ShareButton({ ...props }: ShareButtonProps) {
   return (
     <details className="group relative cursor-pointer">
       <summary
-        // className='list-none outline-none cursor-pointer before:content-["+"] group-open:before:content-["-"] '
-        className={`group-open:before:content-[" "] group-open:before:z-80 flex items-center
-        gap-x-1 group-open:before:fixed group-open:before:bottom-0
-        group-open:before:left-0 group-open:before:right-0 group-open:before:block group-open:before:bg-red-500 [&::-webkit-details-marker]:hidden
-      [&::marker]:hidden`}
+        className='group-open:before:content-[" "] group-open:before:z-80 flex items-center  
+                   gap-x-1 group-open:cursor-default group-open:before:fixed
+                   group-open:before:bottom-0 group-open:before:left-0 group-open:before:right-0 group-open:before:top-0 
+                   group-open:before:block [&::-webkit-details-marker]:hidden [&::marker]:hidden'
       >
         <IconShareNodes width={18} height={18} />
         {props.showText && <span className="text-xs">공유하기</span>}
       </summary>
-      <menu className={`absolute right-0 ${posSytle} rounded-md border border-solid border-gray-200 p-2`}>
+      <menu className={`absolute right-0 ${posSytle} rounded-md border border-solid  border-gray-200  bg-white p-2`}>
         <ul className="flex items-center gap-x-2">
           <li>
             <IconKakaotalk width={36} height={36} />
