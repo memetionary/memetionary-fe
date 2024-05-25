@@ -57,7 +57,7 @@ export const memeList: Meme[] = [
         isEnabled: false,
       },
     },
-    thumbnail: 'https://picsum.photos/600/400',
+    thumbnail: '',
     articles: [
       {
         title: '어쩔티비란?',
@@ -68,7 +68,7 @@ export const memeList: Meme[] = [
         content: `"어쩔 티비"의 어원은 한국어에서 일상적으로 사용되는 관용구에서 나왔습니다. "어쩔"은 "어쩔 수 없는"의 준말이고, "티비"는 "텔레비전"을 줄인 말입니다. 따라서 "어쩔 티비"는 "어쩔 수 없는 텔레비전"을 의미합니다. 이 표현은 특히 어떤 프로그램이나 방송이 불만스럽거나 좋지 않을 때 사용되며, 그것을 바꿀 수 없다는 의미를 담고 있습니다.`,
       },
     ],
-    video: 'https://www.youtube.com/embed/ReKRSTB5PK8?si=aejO38_VUs1behAi',
+    video: 'https://www.youtube.com/watch?v=ReKRSTB5PK8',
     example: [
       { id: 1, name: 'me', content: '오늘 뭐해?' },
       { id: 2, name: 'you', content: '어쩔티비' },
@@ -111,7 +111,7 @@ export const memeList: Meme[] = [
         content: `"어쩔 티비"의 어원은 한국어에서 일상적으로 사용되는 관용구에서 나왔습니다. "어쩔"은 "어쩔 수 없는"의 준말이고, "티비"는 "텔레비전"을 줄인 말입니다. 따라서 "어쩔 티비"는 "어쩔 수 없는 텔레비전"을 의미합니다. 이 표현은 특히 어떤 프로그램이나 방송이 불만스럽거나 좋지 않을 때 사용되며, 그것을 바꿀 수 없다는 의미를 담고 있습니다.`,
       },
     ],
-    video: 'https://www.youtube.com/embed/ReKRSTB5PK8?si=aejO38_VUs1behAi',
+    video: 'https://youtu.be/ReKRSTB5PK8?si=jUjQgHRJWZL0N66W',
     example: [
       { id: 1, name: 'me', content: '오늘 뭐해?' },
       { id: 2, name: 'you', content: '어쩔티비' },

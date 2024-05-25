@@ -41,20 +41,7 @@ export default function Meme() {
         <h2 className="text-3xl font-bold">{props.title}</h2>
         <TitleDetail view={props.view} evaluation={props.evaluation} />
       </div>
-      <Image
-        className="justify-self-center rounded-lg"
-        src={props.thumbnail ?? ''}
-        width={600}
-        height={400}
-        loading="lazy"
-        alt="meme-thumbnail"
-      />
-      {props.articles.map((e) => (
-        <Article key={e.title} title={e.title} content={e.content} />
-      ))}
-      {props.video && <Video src={props.video} />}
-      <Example list={props.example} />
-      {props.tags && <TagList list={props.tags} />}
+      <Thumbnail src={meme.thumbnail} title={meme.title} />
       <div className="flex items-end justify-between">
         <FooterDetail view={props.view} lastUpdate={props.lastUpdate} />
         <DetailAction />
