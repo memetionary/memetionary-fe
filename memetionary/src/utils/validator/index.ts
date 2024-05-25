@@ -37,7 +37,6 @@ class Z {
     const validationSchema: TSchema = {};
     for (const key in schema) {
       validationSchema[key] = schema[key].validators;
-      console.log(schema[key]);
     }
     return new Schema(validationSchema);
   }
