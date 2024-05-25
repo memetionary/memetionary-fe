@@ -4,8 +4,15 @@ import Button from '@/components/Button';
 import { IconGood, IconLogo, IconMeme, IconOpinion } from '@/assets/icons';
 import Input from '@/components/Input';
 import Link from 'next/link';
+import { ChangeEvent, useState } from 'react';
 
 export default function Home() {
+  const [inputValue, setInputValue] = useState<string>('');
+
+  const handleInputChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
+    setInputValue(target.value);
+  };
+
   return (
     <>
       <section className="flex h-fit w-80 min-w-fit flex-col items-center justify-center gap-6 py-16">
@@ -17,12 +24,19 @@ export default function Home() {
           <p className="whitespace-pre-wrap text-center">{`어디서 생긴 밈이길래 이렇게 유행인지 궁금하셨나요?\n밈셔너리에서 검색해보고 궁금증을 해결해보세요!`}</p>
         </div>
         <div className="flex w-full flex-col items-center gap-2">
-          <Input placeholder={`'어쩔티비'를 검색해보세요!`} />
+          <Input onChange={handleInputChange} placeholder={`'어쩔티비'를 검색해보세요!`} />
           <div className="flex w-full gap-4">
             <Button size="full" variant="outlined">
               랜덤 밈 보기
             </Button>
-            <Button size="full">검색하기</Button>
+            <Button size="full">
+              <Link
+                className="flex h-full w-full items-center justify-center"
+                href={`/search/${encodeURIComponent(inputValue)}`}
+              >
+                검색하기
+              </Link>
+            </Button>
           </div>
         </div>
       </section>
