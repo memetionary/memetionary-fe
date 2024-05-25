@@ -1,8 +1,7 @@
-import * as React from 'react';
 import type { SVGProps } from 'react';
-const SvgGood = ({ width = 24, height = 24, ...props }: SVGProps<SVGSVGElement>) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width={width} height={height} viewBox="0 0 512 512" {...props}>
+const SvgIconGood = (props: SVGProps<SVGSVGElement>) => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" {...props}>
     <path d="M247.2 22c-16.3 3.4-29.1 16.8-35.6 37.5-10.4 33.4-16.8 52.7-30.2 91.9-8.5 24.7-15.9 45.7-16.5 46.7-1.5 2.9-3.5 3.6-18.2 6l-13.7 2.4v250.6l114.8-.3c108.1-.3 115-.4 120.2-2.2 14.4-4.8 25.6-14.6 32.2-28.5 2.3-4.7 20.7-40.6 41-79.8 34.5-66.8 36.9-71.6 37.9-78.7 3.6-24.3-11.8-48.3-36.1-56.2-5-1.6-12.2-1.9-82.1-2.4-61-.4-76.9-.8-78.2-1.8-3.7-3.1-3.6-4.9 5.5-72.7 10-74.3 10.1-76.9 5.1-87.6-5.2-11.1-14.6-19.7-25.3-23.2-6.1-2-15.5-2.7-20.8-1.7M32.9 206.2v142.2c.1 112.3.3 141.1 1.3 141.8 2.2 1.3 77.2 1 78.6-.4.9-.9 1.2-34 1.2-143V205H73.5c-31.7 0-40.5.3-40.6 1.2" />
   </svg>
 );
-export default SvgGood;
+export default SvgIconGood;
