@@ -3,9 +3,13 @@ import Image from 'next/image';
 interface ThumbnailProps {
   src?: string;
   title: string;
+  size?: 'lg' | 'md';
 }
 
-export default function Thumbnail({ src, title }: ThumbnailProps) {
+export default function Thumbnail({ src, title, size }: ThumbnailProps) {
+  const sizeStyle = size === 'lg' ? 'h-80' : 'h-ful';
+  const textStyle = size === 'lg' ? 'text-4xl' : 'text-xl';
+
   if (src) {
     return (
       <Image
@@ -20,8 +24,8 @@ export default function Thumbnail({ src, title }: ThumbnailProps) {
   }
 
   return (
-    <div className="grid h-80 w-full place-items-center rounded-lg bg-primary-200 text-white">
-      <h4 className="bold text-4xl font-semibold">{title}</h4>
+    <div className={`grid w-full place-items-center rounded-lg bg-primary-200 text-white ${sizeStyle}`}>
+      <h4 className={`bold font-semibold ${textStyle}`}>{title}</h4>
     </div>
   );
 }
