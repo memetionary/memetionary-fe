@@ -1,4 +1,4 @@
-import { ChangeEventHandler, DetailedHTMLProps, InputHTMLAttributes, useState } from 'react';
+import { ChangeEventHandler, DetailedHTMLProps, InputHTMLAttributes, useEffect, useState } from 'react';
 
 interface InputProps extends DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {}
 
@@ -10,6 +10,10 @@ export default function Input({ ...props }: InputProps) {
     setValue(newValue);
     props?.onChange?.(e);
   };
+
+  useEffect(() => {
+    setValue(String(props.value ?? ''));
+  }, [props.value]);
 
   return (
     <input

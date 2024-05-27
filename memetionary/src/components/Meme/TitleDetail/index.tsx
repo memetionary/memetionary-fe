@@ -12,18 +12,18 @@ export default function TitleDetail({ ...props }: DetailProps) {
 
   return (
     <div className="flex items-center gap-x-2">
-      <div className={iconStyle}>
+      {/* <div className={iconStyle}>
         <IconEyeSolid width={18} height={18} />
         <span className="text-xs">{props.view.toLocaleString()}</span>
-      </div>
-      <div className={iconStyle}>
+      </div> */}
+      {/* <div className={iconStyle}>
         <IconThumbsUp width={18} height={18} />
         <span className="text-xs">{props.evaluation.good.count.toLocaleString()}</span>
       </div>
       <div className={iconStyle}>
         <IconThumbsDown width={18} height={18} />
         <span className="text-xs">{props.evaluation.bad.count.toLocaleString()}</span>
-      </div>
+      </div> */}
       <ShareButton />
     </div>
   );
