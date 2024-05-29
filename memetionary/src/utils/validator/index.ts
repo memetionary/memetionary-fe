@@ -58,3 +58,12 @@ class Z {
 }
 
 export default Z;
+
+export const validateForm = (schema: Schema, form: Record<string, any>) => {
+  const inValid = schema.parse(form);
+  if (inValid) {
+    alert(inValid);
+    return false;
+  }
+  return true;
+};
