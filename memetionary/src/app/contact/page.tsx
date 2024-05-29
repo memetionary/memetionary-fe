@@ -1,12 +1,14 @@
 'use client';
 
-import { ChangeEvent, MouseEventHandler, useState } from 'react';
+import { MouseEventHandler } from 'react';
+import { useForm } from '@/hooks/useForm';
 import Input from '@/components/Input';
 import Select from '@/components/Select';
 import TextArea from '@/components/TextArea';
+import Button from '@/components/Button';
 import { CONTACT_OPTIONS } from '@/components/Select/constants';
 import { contactMail } from '@/api/contact';
-import { validateContactForm } from '@/utils/validator/contactForm';
+import Z, { validateForm } from '@/utils/validator';
 
 export interface ContactForm {
   option: string;
@@ -22,27 +24,30 @@ const INIT_FORM: ContactForm = {
   content: '',
 };
 
-const borderStyle = 'border border-solid border-gray-200 rounded-lg p-4 focus:outline-none';
+const SUCCESS_SUBMIT_MSG = '성공적으로 문의가 접수되었습니다.';
+const MAX_TEXT_LENGTH = 500;
+const MIN_CONTENT_NUM = 10;
+
+const ContactForm = Z.object({
+  option: new Z().string().min({ num: 1, message: '문의 유형을 선택해주세요.' }),
+  email: new Z().string().email({ message: '올바른 이메일 형식을 입력해주세요.' }),
+  title: new Z().string().min({ num: 1, message: '제목을 입력해주세요.' }),
+  content: new Z()
+    .string()
+    .min({ num: MIN_CONTENT_NUM, message: `문의 내용을 최소 ${MIN_CONTENT_NUM}자 이상 입력해주세요` }),
+});
 
 export default function Contact() {
-  const [form, setForm] = useState<ContactForm>(INIT_FORM);
-
-  const handleChangeForm = (e: ChangeEvent) => {
-    const target = e.target as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
-    setForm((prev) => ({ ...prev, [target.id]: target.value }));
-  };
+  const { form, setForm, handleChangeForm } = useForm<ContactForm>(INIT_FORM);
+  const borderStyle = 'border border-solid border-gray-200 rounded-lg p-4 focus:outline-none';
 
   const handleClickSubmit: MouseEventHandler<HTMLButtonElement> = async (e) => {
     e.preventDefault();
-    const inValid = validateContactForm(form);
-    if (inValid) {
-      alert(inValid);
-      return;
+    if (validateForm(ContactForm, form)) {
+      await contactMail({ form });
+      alert(SUCCESS_SUBMIT_MSG);
+      setForm(INIT_FORM);
     }
-    await contactMail({ form });
-    const SUCCESS_SUBMIT_MSG = '성공적으로 문의가 접수되었습니다.';
-    alert(SUCCESS_SUBMIT_MSG);
-    setForm(INIT_FORM);
   };
 
   return (
@@ -73,20 +78,17 @@ export default function Contact() {
         />
         <TextArea
           id="content"
-          className={`${borderStyle} h-52`}
+          className={borderStyle}
           placeholder="문의 내용 (10자 이상 입력해주세요.)"
           value={form?.content}
           showTextLength={true}
+          maxLength={MAX_TEXT_LENGTH}
           onChange={handleChangeForm}
         />
       </div>
-      <button
-        type="submit"
-        className="w-full justify-self-center rounded-lg bg-primary-700  p-6 font-bold text-white disabled:bg-primary-100"
-        onClick={handleClickSubmit}
-      >
+      <Button size="full" variant="outlined" className="p-6" onClick={handleClickSubmit}>
         {'문의접수'}
-      </button>
+      </Button>
     </>
   );
 }
