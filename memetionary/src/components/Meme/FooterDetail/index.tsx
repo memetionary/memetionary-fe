@@ -6,7 +6,7 @@ interface FooterDetailProps {
 }
 
 export default function FooterDetail({ ...props }: FooterDetailProps) {
-  const iconStyle = 'flex items-center gap-x-1';
+  const flexStyle = 'flex items-center gap-x-1';
 
   return (
     <div className="flex gap-x-2">
@@ -14,7 +14,7 @@ export default function FooterDetail({ ...props }: FooterDetailProps) {
         <span className="text-xs">조회수</span>
         <span className="text-xs">{props.view.toLocaleString()}</span>
       </div> */}
-      <div className={iconStyle}>
+      <div className={flexStyle}>
         <span className="text-xs">최근 수정시간</span>
         <span className="text-xs">{getLastUpdateTime(props.lastUpdate)}</span>
       </div>

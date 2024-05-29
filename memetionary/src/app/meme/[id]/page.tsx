@@ -24,7 +24,7 @@ export default async function Meme({ params: { id } }: { params: { id: string } 
       {meme.video && <Video src={meme.video} />}
       <Example list={meme.example} />
       {meme.tags && <TagList list={meme.tags} />}
-      <div className="flex items-end justify-between">
+      <div className="flex flex-wrap items-end justify-between gap-2">
         <FooterDetail view={meme.view} lastUpdate={new Date(meme.lastUpdate)} />
         <DetailAction />
       </div>

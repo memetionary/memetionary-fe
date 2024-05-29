@@ -20,12 +20,12 @@ export default function Video({ ...props }: VideoProps) {
   const embededLink = replaceEmbededLink(props.src);
 
   return (
-    <div className="grid gap-y-4">
+    <div className="relative grid w-full gap-y-4 pb-[56.25%] pt-[30px]">
       <h3 className="text-xl font-bold">관련 이미지 및 동영상</h3>
       <iframe
-        className="justify-self-center"
-        width="560"
-        height="315"
+        className="absolute h-[80%] w-full justify-self-center"
+        width="100%"
+        height="auto"
         src={embededLink}
         title="YouTube video player"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

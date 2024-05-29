@@ -6,7 +6,7 @@ interface TextAreaProps extends DetailedHTMLProps<TextareaHTMLAttributes<HTMLTex
 
 const TEXTAREA_MAX_LENGTH = 500;
 
-export default function TextArea({ showTextLength, ...props }: TextAreaProps) {
+export default function TextArea({ showTextLength, className, ...props }: TextAreaProps) {
   const [value, setValue] = useState('');
 
   const handleTextarea: ChangeEventHandler<HTMLTextAreaElement> = (e) => {
@@ -20,8 +20,14 @@ export default function TextArea({ showTextLength, ...props }: TextAreaProps) {
   }, [props.value]);
 
   return (
-    <div className="flex flex-col gap-2">
-      <textarea {...props} value={value} onChange={handleTextarea} />
+    <div className="flex h-72 flex-col gap-2">
+      <textarea
+        className={`resize-none ${className}`}
+        value={value}
+        onChange={handleTextarea}
+        {...props}
+        maxLength={props.maxLength}
+      />
       {showTextLength && (
         <span className="self-end text-sm text-gray-400">{`${value.length}/${TEXTAREA_MAX_LENGTH}`}</span>
       )}

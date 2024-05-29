@@ -4,8 +4,8 @@ interface SelectProps extends DetailedHTMLProps<SelectHTMLAttributes<HTMLSelectE
   options: string[];
 }
 
-export default function Select({ options, ...props }: SelectProps) {
-  const optionType = options[0];
+export default function Select({ ...props }: SelectProps) {
+  const optionType = props.options[0];
   const [value, setValue] = useState(optionType);
 
   const handleChangeSelect: ChangeEventHandler<HTMLSelectElement> = (e) => {
@@ -20,7 +20,7 @@ export default function Select({ options, ...props }: SelectProps) {
 
   return (
     <select {...props} value={value} onChange={handleChangeSelect}>
-      {options.map((e, i) => (
+      {props.options.map((e, i) => (
         <option key={e} value={e} disabled={i === 0}>
           {e}
         </option>
