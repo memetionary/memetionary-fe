@@ -5,6 +5,7 @@ import { IconGood, IconLogo, IconMeme, IconOpinion } from '@/assets/icons';
 import Input from '@/components/Input';
 import Link from 'next/link';
 import { ChangeEvent, useState } from 'react';
+import RandomButtom from '@/components/RandomButton';
 
 export default function Home() {
   const [inputValue, setInputValue] = useState<string>('');
@@ -26,9 +27,7 @@ export default function Home() {
         <div className="flex w-full flex-col items-center gap-2">
           <Input onChange={handleInputChange} placeholder={`'어쩔티비'를 검색해보세요!`} />
           <div className="flex w-full gap-4">
-            <Button size="full" variant="outlined">
-              랜덤 밈 보기
-            </Button>
+            <RandomButtom type="text" />
             <Button size="full">
               <Link
                 className="flex h-full w-full items-center justify-center"
