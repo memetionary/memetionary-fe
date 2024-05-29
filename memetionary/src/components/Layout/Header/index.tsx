@@ -1,5 +1,6 @@
-import { IconLogo, IconRandom, IconSearch } from '@/assets/icons';
 import Link from 'next/link';
+import RandomButtom from '@/components/RandomButton';
+import { IconLogo, IconSearch } from '@/assets/icons';
 
 const TITLE_TEXT = 'Memetionary';
 
@@ -13,11 +14,9 @@ const Header = () => {
         </div>
       </Link>
       <div className="flex items-center gap-3">
-        <Link href={'/'}>
-          <IconRandom />
-        </Link>
+        <RandomButtom type="icon" />
         <Link href={'/search'}>
-          <IconSearch />
+          <IconSearch width={16} height={16} />
         </Link>
       </div>
     </header>

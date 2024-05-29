@@ -10,3 +10,12 @@ export const getMemeDetail = async ({ id }: { id: string }): Promise<Meme> => {
     throw error;
   }
 };
+
+export const getRandomMemeId = async () => {
+  try {
+    const { data } = await axios.get(`${process.env.NEXT_PUBLIC_URL}/meme/random`);
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};
