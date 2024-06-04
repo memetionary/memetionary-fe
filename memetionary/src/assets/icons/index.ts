@@ -25,3 +25,4 @@ export { default as IconUserRegular } from './IconUserRegular';
 export { default as IconUserSolid } from './IconUserSolid';
 export { default as IconY2K } from './IconY2K';
 export { default as IconYoung } from './IconYoung';
+export { default as IconX } from './IconX';
