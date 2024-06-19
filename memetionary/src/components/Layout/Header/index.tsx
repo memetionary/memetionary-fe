@@ -9,7 +9,7 @@ const Header = () => {
     <header className="flex h-14 w-full select-none items-center justify-between border-b-2 px-3">
       <Link href={'/'}>
         <div className="flex items-center gap-2">
-          <IconLogo />
+          <IconLogo width={28} height={28} />
           <h1 className="text-lg">{TITLE_TEXT}</h1>
         </div>
       </Link>

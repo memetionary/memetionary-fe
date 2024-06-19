@@ -13,6 +13,7 @@ export { default as IconRandom } from './IconRandom';
 export { default as IconRightDirection } from './IconRightDirection';
 export { default as IconSearch } from './IconSearch';
 export { default as IconShareNodes } from './IconShareNodes';
+export { default as IconStudent } from './IconStudent';
 export { default as IconThumbsDownSolid } from './IconThumbsDownSolid';
 export { default as IconThumbsDown } from './IconThumbsDown';
 export { default as IconThumbsUpSolid } from './IconThumbsUpSolid';
