@@ -1,14 +1,21 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Rank from '@/components/Test/Rank';
 import Share from '@/components/Test/Share';
 import Button from '@/components/Button';
+import { decoding } from '@/utils/encodingUtil';
 
 export default function TestResult() {
   const router = useRouter();
+  const s = useSearchParams();
+  const encodedResult = s.get('d') ?? '';
+  const result = decoding(encodedResult);
+  const { rank, answer, correct_rate } = JSON.parse(result);
 
-  const rank = 1;
+  const handleClickTest = () => {
+    router.push('/test');
+  };
 
   return (
     <>
