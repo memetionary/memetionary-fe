@@ -2,9 +2,11 @@
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import Button from '@/components/Button';
 import Share from '@/components/Test/Share';
 import { getTestCount, postTest } from '@/api/test';
+import { encoding } from '@/utils/encodingUtil';
 import TestThumbnail from '@/assets/images/test-thumbnail.png';
 
 interface TestCount {
@@ -16,6 +18,7 @@ const INIT_COUNT = { tester: 0, share: 0 };
 
 export default function Test() {
   const [count, setCount] = useState<TestCount>(INIT_COUNT);
+  const route = useRouter();
 
   const fetchTestInfo = async () => {
     const testInfo = await getTestCount({ id: 1 });
@@ -25,6 +28,8 @@ export default function Test() {
   const handleClickTestSubmit = async () => {
     const answer = [1, 2, 3, 4, 1, 2, 3, 4, 1, 2];
     const { rank, correct_rate } = await postTest({ id: 1, answer });
+    const encodedResult = encoding(JSON.stringify({ rank, answer, correct_rate }));
+    route.replace(`/test/result?d=${encodedResult}`);
   };
 
   useEffect(() => {
