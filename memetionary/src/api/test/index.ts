@@ -16,3 +16,16 @@ export const getTestCount = async ({ id }: { id: number }): Promise<GetTestInfoR
   }
 };
 
+interface PostTestResponese {
+  rank: number;
+  correct_rate: number[];
+}
+
+export const postTest = async ({ id, answer }: { id: number; answer: number[] }): Promise<PostTestResponese> => {
+  try {
+    const { data } = await axios.post(`${process.env.NEXT_PUBLIC_URL}/test/${id}`, { answer });
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};

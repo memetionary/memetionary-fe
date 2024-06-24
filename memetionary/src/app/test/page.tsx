@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Button from '@/components/Button';
 import Share from '@/components/Test/Share';
+import { getTestCount, postTest } from '@/api/test';
 import TestThumbnail from '@/assets/images/test-thumbnail.png';
 
 interface TestCount {
@@ -21,6 +22,11 @@ export default function Test() {
     setCount({ tester: Number(testInfo.tester_count), share: Number(testInfo.share_count) });
   };
 
+  const handleClickTestSubmit = async () => {
+    const answer = [1, 2, 3, 4, 1, 2, 3, 4, 1, 2];
+    const { rank, correct_rate } = await postTest({ id: 1, answer });
+  };
+
   useEffect(() => {
     fetchTestInfo();
   }, []);
@@ -29,7 +35,7 @@ export default function Test() {
     <>
       <div className="mx-10">
         <Image src={TestThumbnail} alt="text-thumbnail" width={350} />
-        <Button size="full" variant="contained" className="text-xl font-semibold">
+        <Button size="full" variant="contained" className="mt-4 text-xl font-semibold" onClick={handleClickTestSubmit}>
           {'테스트 하러가기'}
         </Button>
         <section className="grid gap-4 py-6">
