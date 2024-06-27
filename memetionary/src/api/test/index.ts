@@ -4,6 +4,7 @@ export interface GetTestInfoResponse {
   tester_count: number;
   share_count: number;
   correct_rate: number[];
+  rank: number[];
   answer: number[];
 }
 
