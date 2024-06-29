@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import Share from '@/components/Test/Share';
-import Submitter from '@/components/Test/Submitter';
 import { getTestCount } from '@/api/test';
 import TestThumbnail from '@/assets/images/test-thumbnail.png';
+import Title from '@/components/Test/Title';
 
 const TEST_ID = 1;
 const MOCK_ANSWER = [1, 2, 3, 4, 1, 2, 3, 4, 1, 2];
@@ -12,6 +12,7 @@ export default async function Test() {
 
   return (
     <>
+      <Title />
       <div className="mx-10">
         <Image src={TestThumbnail} alt="text-thumbnail" width={350} priority />
         <Submitter id={TEST_ID} answer={MOCK_ANSWER} />
