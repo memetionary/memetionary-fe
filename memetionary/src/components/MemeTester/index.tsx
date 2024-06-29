@@ -17,7 +17,7 @@ const TITLE = {
   CAPTION: '기초 영역',
 };
 
-const TIMER_MAX_SECONDS = 2;
+const TIMER_MAX_SECONDS = 30;
 const NO_SELECT_ANSWER = 0;
 
 const MemeTester = ({ testId, questionList }: MemeTesterProps) => {
