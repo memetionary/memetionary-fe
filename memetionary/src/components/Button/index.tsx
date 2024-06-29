@@ -2,6 +2,7 @@ import { MouseEventHandler, ReactNode } from 'react';
 
 interface ButtonProps {
   size: 'small' | 'medium' | 'full';
+  type?: 'button' | 'submit';
   // color: 'primary' | 'danger' | 'black';
   variant?: 'outlined' | 'contained';
   disabled?: boolean;
@@ -22,9 +23,10 @@ const ButtonVariant = {
   contained: 'bg-primary-300 text-white enabled:hover:bg-primary-500 enabled:active:bg-primary-300',
 };
 
-const Button = ({ size, variant = 'contained', className = '', children, ...props }: ButtonProps) => {
+const Button = ({ size, type = 'button', variant = 'contained', className = '', children, ...props }: ButtonProps) => {
   return (
     <button
+      type={type}
       className={`${ButtonSize[size]} ${ButtonVariant[variant]} flex items-center justify-center rounded-md text-sm disabled:bg-neutral-200 disabled:text-neutral-500 ${className}`}
       {...props}
     >

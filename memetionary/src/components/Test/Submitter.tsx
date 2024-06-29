@@ -20,8 +20,8 @@ export default function Submitter({ id, answer }: SubmitterProps) {
   };
 
   return (
-    <Button size="full" variant="contained" className="mt-4 text-xl font-semibold" onClick={handleClickTestSubmit}>
-      {'테스트 하러가기'}
+    <Button size="full" variant="contained" className="text-xl font-semibold" onClick={handleClickTestSubmit}>
+      {'테스트 결과 확인하기'}
     </Button>
   );
 }
