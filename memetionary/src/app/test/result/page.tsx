@@ -5,6 +5,7 @@ import Rank from '@/components/Test/Rank';
 import Share from '@/components/Test/Share';
 import Button from '@/components/Button';
 import { decoding } from '@/utils/encodingUtil';
+import Title from '@/components/Test/Title';
 
 export default function TestResult() {
   const router = useRouter();
@@ -19,6 +20,7 @@ export default function TestResult() {
 
   return (
     <>
+      <Title />
       <div className="mx-10">
         <Rank value={rank} />
         <Button size="full" variant="contained" className="mt-4 text-xl font-semibold" onClick={handleClickTest}>
