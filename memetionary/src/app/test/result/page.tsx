@@ -6,6 +6,7 @@ import Share from '@/components/Test/Share';
 import Button from '@/components/Button';
 import { decoding } from '@/utils/encodingUtil';
 import Title from '@/components/Test/Title';
+import Linker from '@/components/Test/Linker';
 
 export default function TestResult() {
   const router = useRouter();
@@ -28,6 +29,7 @@ export default function TestResult() {
         </Button>
       </div>
       <Share />
+      <Linker type="review" />
     </>
   );
 }
