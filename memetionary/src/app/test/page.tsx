@@ -36,7 +36,7 @@ export default async function Test() {
           </div>
         </section>
       </div>
-      <Share />
+      <Share type="preview" />
     </>
   );
 }

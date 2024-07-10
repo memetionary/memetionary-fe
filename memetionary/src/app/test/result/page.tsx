@@ -28,7 +28,7 @@ export default function TestResult() {
           {'테스트 다시하기'}
         </Button>
       </div>
-      <Share />
+      <Share type="review" />
       <Linker type="review" />
     </>
   );
