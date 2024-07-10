@@ -1,12 +1,17 @@
 import { IconStudent } from '@/assets/icons';
 import ShareButtonGroups from '../ShareButton/ShareButtonGroup';
 
-const SHARE_MSG = '같이 풀고 싶은 친구에게 공유하기';
 interface TestShareProps {
-  title?: string;
+  type: 'preview' | 'review';
 }
 
-export default function TestShare({ title = SHARE_MSG, ...props }: TestShareProps) {
+const SHARE_MSG = {
+  PREVIEW: '같이 풀고 싶은 친구에게 공유하기',
+  REVIEW: '결과를 친구에게 공유하기',
+};
+
+export default function TestShare({ ...props }: TestShareProps) {
+  const title = props.type === 'preview' ? SHARE_MSG.PREVIEW : SHARE_MSG.REVIEW;
   return (
     <div className="grid w-full justify-items-center gap-5 bg-primary-100 px-10 pt-4">
       <h3 className="text-xl font-bold">{title}</h3>
