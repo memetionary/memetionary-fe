@@ -6,7 +6,9 @@ type QuestionProps = {
 } & Question;
 
 export default function Question({ ...props }: QuestionProps) {
-  const Icon = props.selectedAnswer === props.answer ? IconCircle : IconX;
+  const isCorrect = props.selectedAnswer === props.answer;
+  const Icon = isCorrect ? IconCircle : IconX;
+
   return (
     <fieldset className="flex w-full flex-col gap-5">
       <div className="flex w-full flex-col gap-2 rounded bg-white p-5 text-xl font-semibold">
@@ -15,27 +17,30 @@ export default function Question({ ...props }: QuestionProps) {
       </div>
       {props.choices.map(({ no, text }) => {
         const isSelected = props.selectedAnswer === no;
-        const isCorrect = props.answer === no;
-
-        const colorStyle = isCorrect ? 'primary-800' : isSelected ? 'red-400' : 'gray-600';
+        const isAnswer = props.answer === no;
 
         return (
-          <div key={no} className="flex w-full cursor-pointer items-center gap-2 text-lg font-semibold">
+          <div
+            key={no}
+            className={`flex w-full cursor-pointer items-center gap-2 text-lg font-semibold ${isAnswer ? 'text-primary-800' : isSelected ? 'text-red-400' : 'text-gray-800'}`}
+          >
             <input
               type="checkbox"
               key={`${props.no}-${no}`}
               id={`${no}`}
               value={no}
               name={`${props.no}`}
-              checked={isSelected || isCorrect}
-              className={`peer h-5 w-5 shrink-0 appearance-none rounded-full border-2 border-${colorStyle}`}
+              checked={isSelected || isAnswer}
+              className={`peer h-5 w-5 shrink-0 appearance-none rounded-full border-2 ${isAnswer ? 'border-primary-800' : isSelected ? 'border-red-400' : 'border-gray-800'}`}
               disabled={true}
             />
-            <div className={`absolute ml-1 h-3 w-3 rounded-full peer-checked:bg-${colorStyle}`} />
-            <label className={`cursor-pointer peer-disabled:cursor-not-allowed text-${colorStyle}`} htmlFor={`${no}`}>
+            <div
+              className={`absolute ml-1 h-3 w-3 rounded-full ${isAnswer ? 'peer-checked:bg-primary-800' : 'peer-checked:bg-red-400'}`}
+            />
+            <label className={`cursor-pointer peer-disabled:cursor-not-allowed`} htmlFor={`${no}`}>
               {text}
             </label>
-            {isSelected && <Icon className={`text-${colorStyle}`} width={16} height={16} />}
+            {isSelected && <Icon width={16} height={16} />}
           </div>
         );
       })}
