@@ -1,4 +1,5 @@
 export { default as IconBad } from './IconBad';
+export { default as IconCircle } from './IconCircle';
 export { default as IconEmployee } from './IconEmployee';
 export { default as IconEnvelope } from './IconEnvelope';
 export { default as IconEyeSolid } from './IconEyeSolid';
@@ -23,5 +24,6 @@ export { default as IconThumbsUpSolid } from './IconThumbsUpSolid';
 export { default as IconThumbsUp } from './IconThumbsUp';
 export { default as IconUserRegular } from './IconUserRegular';
 export { default as IconUserSolid } from './IconUserSolid';
+export { default as IconX } from './IconX';
 export { default as IconY2K } from './IconY2K';
 export { default as IconYoung } from './IconYoung';
