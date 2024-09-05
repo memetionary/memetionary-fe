@@ -9,7 +9,7 @@ interface RandomButtonProps {
   type: 'icon' | 'text';
 }
 
-export default function RandomButtom({ ...props }: RandomButtonProps) {
+export default function RandomButton({ ...props }: RandomButtonProps) {
   const router = useRouter();
 
   const randomMeme = async () => {
@@ -18,7 +18,7 @@ export default function RandomButtom({ ...props }: RandomButtonProps) {
   };
 
   return props.type === 'icon' ? (
-    <IconRandom className="cursor-pointer" width={16} height={16} onClick={randomMeme} />
+    <IconRandom className="cursor-pointer" width={24} height={24} onClick={randomMeme} />
   ) : (
     <Button size="full" variant="outlined" onClick={randomMeme}>
       랜덤 밈 보기
