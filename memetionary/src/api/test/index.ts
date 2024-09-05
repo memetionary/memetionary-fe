@@ -30,3 +30,12 @@ export const postTest = async ({ id, answer }: { id: number; answer: number[] })
     throw error;
   }
 };
+
+export const postShareCount = async ({ id }: { id: number }) => {
+  try {
+    const { data } = await axios.post(`${process.env.NEXT_PUBLIC_URL}/test/share/${id}`);
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};
