@@ -1,5 +1,6 @@
 import Header from '@/components/Layout/Header';
 import Main from '@/components/Layout/Main';
+import RootProvider from '@/components/RootProvider';
 
 const BodyLayout = ({
   children,
@@ -10,6 +11,7 @@ const BodyLayout = ({
     <body className="flex min-h-screen flex-col items-center">
       <Header />
       <Main>{children}</Main>
+      <RootProvider />
     </body>
   );
 };
