@@ -1,13 +1,15 @@
 import { IconEyeSolid, IconThumbsDown, IconThumbsUp } from '@/assets/icons';
 import ShareButton from '@/components/ShareButton';
 import { Evaluation } from '@/app/api/meme/data';
+import { ShareContents } from '@/hooks/useShare';
 
 interface DetailProps {
+  contents: ShareContents;
   view: number;
   evaluation: Evaluation;
 }
 
-export default function TitleDetail({ ...props }: DetailProps) {
+export default function TitleDetail({ contents, ...props }: DetailProps) {
   const iconStyle = 'flex items-center gap-x-1';
 
   return (
@@ -24,7 +26,7 @@ export default function TitleDetail({ ...props }: DetailProps) {
         <IconThumbsDown width={18} height={18} />
         <span className="text-xs">{props.evaluation.bad.count.toLocaleString()}</span>
       </div> */}
-      <ShareButton />
+      <ShareButton contents={contents} />
     </div>
   );
 }
