@@ -14,26 +14,24 @@ const useShare = (contents: ShareContents) => {
     const URL = window.location.href;
 
     const canUseShareApi =
-      typeof window !== 'undefined' &&
-      window.navigator.canShare &&
-      window.navigator.canShare({ title: contents.title, text: contents.text });
+      typeof window !== 'undefined' && window.navigator.canShare && window.navigator.canShare(contents);
 
-    if (!canUseShareApi) {
-      window.navigator.clipboard.writeText(URL).then(() => {
-        toast.success('링크가 복사되었습니다!');
-      });
+    // if (!canUseShareApi) {
+    window.navigator.clipboard.writeText(URL).then(() => {
+      toast.success('링크가 복사되었습니다!');
+    });
 
-      return;
-    }
+    //   return;
+    // }
 
-    window.navigator.share({ title: contents.title, text: contents.text });
+    // window.navigator.share({ title: contents.title, text: contents.text });
     toast.success('링크가 복사되었습니다!');
   };
 
   const handleKakaoFeedShare = async ({ buttonsTitle }: { buttonsTitle?: string }) => {
     const URL = window.location.href;
 
-    window.Kakao.Link.sendDefault({
+    window.Kakao.Share.sendDefault({
       objectType: 'feed',
       content: {
         title: contents.title,
@@ -57,17 +55,21 @@ const useShare = (contents: ShareContents) => {
     });
   };
 
-  const handleKakaoTemplateShare = async <T>(templateId: number, templateArgs: T) => {
+  const handleKakaoTemplateShare = (templateId: string) => {
     window.Kakao.Share.sendCustom({
-      templateId,
-      templateArgs,
+      templateId: templateId,
     });
   };
 
   /* X(트위터) 공유 */
-  const handleXShare = ({ preText = '' }: { preText?: string }) => {
+  const handleXShare = ({ preText = '' }: { preText?: string } = {}) => {
     const URL = window.location.href;
-    const shareURL = `https://X.com/intent/tweet?via=밈셔너리&text=${preText}\n${contents.title}&url=${encodeURIComponent(URL)}`;
+    const { title, text } = contents;
+
+    const formattedPreText = preText ? `${preText}%0A` : '';
+    const formattedText = text ? `${text}` : '';
+
+    const shareURL = `https://X.com/intent/tweet?via=밈셔너리&text=${formattedPreText}${title}%0A${formattedText}&url=${encodeURIComponent(URL)}`;
     window.open(shareURL);
   };
 

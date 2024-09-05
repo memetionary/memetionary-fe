@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import Share from '@/components/Test/Share';
+import TestShare from '@/components/Test/Share';
 import { getTestCount } from '@/api/test';
 import TestThumbnail from '@/assets/images/test-thumbnail.png';
 import Link from 'next/link';
@@ -36,7 +36,13 @@ export default async function Test() {
           </div>
         </section>
       </div>
-      <Share type="preview" />
+      <TestShare
+        type="preview"
+        contents={{
+          title: '제 1회 밈능력테스트 : 기초영역',
+          text: '밈셔너리에서 주관하는 밈능력테스트로 당신의 밈 능력을 테스트해보세요!',
+        }}
+      />
     </>
   );
 }
