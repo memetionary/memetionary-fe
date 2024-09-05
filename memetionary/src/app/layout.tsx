@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import '@/styles/globals.css';
 import BodyLayout from '@/components/Layout';
+import KakaoScript from '@/components/KaKaoScript';
 
 export const metadata: Metadata = {
   title: 'Memetionary',
@@ -15,6 +16,7 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <BodyLayout>{children}</BodyLayout>
+      <KakaoScript />
     </html>
   );
 }
