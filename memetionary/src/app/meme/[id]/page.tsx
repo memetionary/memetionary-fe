@@ -17,7 +17,11 @@ export default async function Meme({ params: { id } }: { params: { id: string } 
     <>
       <div className="flex items-end justify-between">
         <h2 className="text-3xl font-bold">{meme.title}</h2>
-        <TitleDetail view={meme.view} evaluation={meme.evaluation} />
+        <TitleDetail
+          view={meme.view}
+          evaluation={meme.evaluation}
+          contents={{ title: meme.title, text: meme.articles[0].content || '', imageUrl: meme.thumbnail }}
+        />
       </div>
       <Thumbnail src={meme.thumbnail} title={meme.title} size="lg" />
       {meme.articles?.map((e) => <Article key={e.title} title={e.title} content={e.content} />)}

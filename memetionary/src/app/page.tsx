@@ -6,6 +6,8 @@ import Input from '@/components/Input';
 import Link from 'next/link';
 import { ChangeEvent, useState } from 'react';
 import RandomButtom from '@/components/RandomButton';
+import TestBanner from '@/assets/images/banner-meme-test.png';
+import Image from 'next/image';
 
 export default function Home() {
   const [inputValue, setInputValue] = useState<string>('');
@@ -56,6 +58,11 @@ export default function Home() {
         <div className="h-36">
           <IconGood width={'full'} height={'full'} />
         </div>
+      </section>
+      <section className="flex h-fit w-full items-center justify-center">
+        <Link href={'/test'}>
+          <Image src={TestBanner} alt="test-banner" />
+        </Link>
       </section>
       <section className="flex h-fit w-80 min-w-fit flex-col items-center justify-center gap-6 py-16">
         <div className=" h-20">

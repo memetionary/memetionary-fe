@@ -12,8 +12,8 @@ export default function ShareButtonGroups({ size = 'sm', ...props }: ShareButton
       <li>
         <IconKakaotalk className={sizeStyle} />
       </li>
-      <li className={`grid items-center text-center rounded-full border border-transparent bg-black p-2 ${sizeStyle}`}>
-        <p className="text-white font-bold">X</p>
+      <li className={`grid items-center rounded-full border border-transparent bg-black p-2 text-center ${sizeStyle}`}>
+        <p className="font-bold text-white">X</p>
       </li>
       <li className={`rounded-full border border-transparent bg-gray-100 p-3 ${sizeStyle}`}>
         <IconPaperclip />
