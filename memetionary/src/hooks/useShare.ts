@@ -30,7 +30,7 @@ const useShare = (contents: ShareContents) => {
     toast.success('링크가 복사되었습니다!');
   };
 
-  const handleKakaoFeedShare = async ({ buttonsTitle }: { buttonsTitle: string }) => {
+  const handleKakaoFeedShare = async ({ buttonsTitle }: { buttonsTitle?: string }) => {
     const URL = window.location.href;
 
     window.Kakao.Link.sendDefault({
@@ -46,7 +46,7 @@ const useShare = (contents: ShareContents) => {
       },
       buttons: [
         {
-          title: buttonsTitle,
+          title: buttonsTitle || '밈셔너리에서 자세히 알아보기',
           link: {
             mobileWebUrl: URL,
             webUrl: URL,

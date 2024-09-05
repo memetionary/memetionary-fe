@@ -1,8 +1,6 @@
 import { Meme } from '@/app/api/meme/data';
-import { IconEyeSolid, IconThumbsDown, IconThumbsUp } from '@/assets/icons';
 import TagList from '@/components/Meme/TagList';
 import TitleDetail from '@/components/Meme/TitleDetail';
-import Image from 'next/image';
 import Link from 'next/link';
 import Thumbnail from '@/components/Meme/Thumbnail';
 
@@ -20,7 +18,7 @@ const MemeList = ({ memeList, ...props }: MemeListProps) => {
             <div className="flex flex-col gap-1">
               <div className="flex w-full justify-between">
                 <h3 className="text-xl font-semibold">{title}</h3>
-                <TitleDetail view={view} evaluation={evaluation} />
+                <TitleDetail view={view} evaluation={evaluation} contents={{ title, text: '' }} />
               </div>
               <p className="w-full">{articles[0]?.content}</p>
               <TagList list={tags || []} />
