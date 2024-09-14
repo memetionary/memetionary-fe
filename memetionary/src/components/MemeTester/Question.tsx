@@ -1,4 +1,4 @@
-import { Question } from '@/app/api/question/data';
+import { type Question } from '@/app/api/question/data';
 import { IconX, IconCircle } from '@/assets/icons';
 
 type QuestionProps = {

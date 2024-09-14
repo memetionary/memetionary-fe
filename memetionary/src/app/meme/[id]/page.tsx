@@ -28,7 +28,7 @@ export default async function Meme({ params: { id } }: { params: { id: string } 
       {meme.tags && <TagList list={meme.tags} />}
       <div className="flex flex-wrap items-end justify-between gap-2">
         <FooterDetail view={meme.view} lastUpdate={new Date(meme.lastUpdate)} />
-        <DetailAction />
+        <DetailAction contents={{ title: meme.title, text: meme.description || '', imageUrl: meme.image }} />
       </div>
       {/* <Evaluation {...meme.evaluation} /> */}
     </>
