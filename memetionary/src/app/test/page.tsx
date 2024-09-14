@@ -9,6 +9,8 @@ import Title from '@/components/Test/Title';
 const TEST_ID = 1;
 const MOCK_ANSWER = [1, 2, 3, 4, 1, 2, 3, 4, 1, 2];
 
+export const dynamic = 'force-dynamic';
+
 export default async function Test() {
   const { tester_count, share_count } = await getTestCount({ id: TEST_ID });
 
