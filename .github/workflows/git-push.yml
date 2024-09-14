@@ -1,0 +1,49 @@
+name: git push into another repo to deploy to vercel
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: pandoc/latex
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install mustache (to update the date)
+        run: apk add ruby && gem install mustache
+
+      - name: Collect commit messages
+        id: collect-messages
+        run: |
+          echo "Collecting commit messages..."
+          # Initialize an empty file to store commit messages
+          echo "" > commit-messages.txt
+          # Iterate over all commits and append messages to the file
+          for commit in $(jq -r '.commits[].message' <<< '${{ toJson(github.event) }}'); do
+            echo "$commit" >> commit-messages.txt
+          done
+
+      - name: creates output
+        run: sh ./build.sh
+
+      - name: Add commit messages to the output directory
+        run: |
+          cp commit-messages.txt output/
+
+      - name: Pushes to another repository
+        id: push_directory
+        uses: cpina/github-action-push-to-another-repository@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.AUTO_ACTIONS }}
+        with:
+          source-directory: "output"
+          destination-github-username: mogooee
+          destination-repository-name: memetionary-fe
+          user-email: ${{ secrets.EMAIL }}
+          commit-message: "Add commit messages from source repo"
+          target-branch: deploy-test
+
+      - name: Test get variable exported by push-to-another-repository
+        run: echo $DESTINATION_CLONED_DIRECTORY
