@@ -9,6 +9,8 @@ import RandomButtom from '@/components/RandomButton';
 import TestBanner from '@/assets/images/banner-meme-test.png';
 import Image from 'next/image';
 
+export const dynamic = 'force-dynamic';
+
 export default function Home() {
   const [inputValue, setInputValue] = useState<string>('');
 

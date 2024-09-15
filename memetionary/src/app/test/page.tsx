@@ -17,6 +17,8 @@ const INIT_TEST_COUNT = {
   share_count: 0,
 };
 
+export const dynamic = 'force-dynamic';
+
 export default function Test() {
   const [testCount, setTestCount] = useState<typeof INIT_TEST_COUNT>();
 

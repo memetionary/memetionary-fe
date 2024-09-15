@@ -14,6 +14,8 @@ import { useEffect, useState } from 'react';
 import { type Meme } from '@/app/api/meme/data';
 import Loading from '@/app/test/loading';
 
+export const dynamic = 'force-dynamic';
+
 export default async function Meme({ params: { id } }: { params: { id: string } }) {
   const [memeData, setMemeData] = useState<Meme>();
 

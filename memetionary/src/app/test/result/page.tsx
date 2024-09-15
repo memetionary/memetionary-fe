@@ -12,6 +12,8 @@ import { questionList } from '@/app/api/question/data';
 import { RANK } from '@/components/Test/constant';
 import * as icons from '@/components/Test/icons';
 
+export const dynamic = 'force-dynamic';
+
 export default function TestResult() {
   const router = useRouter();
   const s = useSearchParams();

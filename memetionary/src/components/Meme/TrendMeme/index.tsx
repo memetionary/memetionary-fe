@@ -3,6 +3,8 @@ import Link from 'next/link';
 
 const TITLE_TEXT = '요즘 뜨는 밈';
 
+export const dynamic = 'force-dynamic';
+
 const getTrendMemeList = async (): Promise<{ data: Meme[] }> => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/meme/trend`);
   if (!res.ok) throw new Error('Failed to fetch data');

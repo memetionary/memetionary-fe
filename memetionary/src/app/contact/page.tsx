@@ -37,6 +37,8 @@ const ContactForm = Z.object({
     .min({ num: MIN_CONTENT_NUM, message: `문의 내용을 최소 ${MIN_CONTENT_NUM}자 이상 입력해주세요` }),
 });
 
+export const dynamic = 'force-dynamic';
+
 export default function Contact() {
   const { form, setForm, handleChangeForm } = useForm<ContactForm>(INIT_FORM);
   const borderStyle = 'border border-solid border-gray-200 rounded-lg p-4 focus:outline-none';

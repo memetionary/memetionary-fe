@@ -12,6 +12,8 @@ type Params = {
 
 const TEST_ID = '1';
 
+export const dynamic = 'force-dynamic';
+
 export default function TestPage({ params }: { params: Params }) {
   if (params.id !== TEST_ID) {
     notFound();
