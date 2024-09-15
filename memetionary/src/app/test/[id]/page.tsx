@@ -1,6 +1,5 @@
 'use client';
 
-import { getQuestionList } from '@/api/question';
 import { Question } from '@/app/api/question/data';
 import MemeTester from '@/components/MemeTester';
 import { notFound } from 'next/navigation';
@@ -22,7 +21,8 @@ export default function TestPage({ params }: { params: Params }) {
   const [questionData, setQuestionData] = useState<Question[]>();
 
   const fetchQuestionData = async () => {
-    const { data: questionList } = await getQuestionList();
+    const res = await import('@/app/api/question/route');
+    const { data: questionList } = await (await res.GET()).json();
     setQuestionData(questionList);
   };
 

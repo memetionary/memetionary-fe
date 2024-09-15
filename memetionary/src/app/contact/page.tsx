@@ -7,7 +7,6 @@ import Select from '@/components/Select';
 import TextArea from '@/components/TextArea';
 import Button from '@/components/Button';
 import { CONTACT_OPTIONS } from '@/components/Select/constants';
-import { contactMail } from '@/api/contact';
 import Z, { validateForm } from '@/utils/validator';
 
 export interface ContactForm {
@@ -46,7 +45,14 @@ export default function Contact() {
   const handleClickSubmit: MouseEventHandler<HTMLButtonElement> = async (e) => {
     e.preventDefault();
     if (validateForm(ContactForm, form)) {
-      await contactMail({ form });
+      const res = await import('@/app/api/contact/route');
+      const req = new Request('/', {
+        method: 'POST',
+        body: JSON.stringify({
+          form,
+        }),
+      });
+      await res.POST(req);
       alert(SUCCESS_SUBMIT_MSG);
       setForm(INIT_FORM);
     }

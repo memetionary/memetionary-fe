@@ -7,6 +7,7 @@ import MemeList from '@/components/Meme/MemeList';
 import Pagination from '@/components/Pagination';
 import { useRouter, useParams } from 'next/navigation';
 import { ChangeEvent, KeyboardEvent, useEffect, useState } from 'react';
+import { NextRequest } from 'next/server';
 
 export const dynamic = 'force-dynamic';
 
@@ -30,14 +31,16 @@ export default function SearchResultPage() {
   };
 
   const fetchPageListData = async () => {
-    await axios
-      .get(`${process.env.NEXT_PUBLIC_URL}/meme/list?pageNo=${pageNo}&keyword=${searchKeyword}`)
-      .then(({ data }) => {
-        const { data: result, pagination } = data;
-        setResultMemeList(result);
-        setLastPageNo(pagination.lastPageNo);
-        console.log(pagination);
-      });
+    const res = await import('@/app/api/meme/list/route');
+    const req = new NextRequest(`${process.env.NEXT_PUBLIC_URL}/meme/list?pageNo=${pageNo}&keyword=${searchKeyword}`, {
+      method: 'GET',
+    });
+    await (await res.GET(req)).json().then((data) => {
+      const { data: result, pagination } = data;
+      setResultMemeList(result);
+      setLastPageNo(pagination.lastPageNo);
+      console.log(pagination);
+    });
   };
 
   useEffect(() => {

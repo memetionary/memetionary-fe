@@ -5,7 +5,6 @@ import Evaluation from '@/components/Meme/Evaluation';
 import TagList from '@/components/Meme/TagList';
 import DetailAction from '@/components/Meme/DetailAction';
 import FooterDetail from '@/components/Meme/FooterDetail';
-import { getMemeDetail } from '@/api/meme';
 import Thumbnail from '@/components/Meme/Thumbnail';
 import Description from '@/components/Meme/Article';
 import Conversation from '@/components/Meme/Conversation';
@@ -16,11 +15,14 @@ import Loading from '@/app/test/loading';
 
 export const dynamic = 'force-dynamic';
 
-export default async function Meme({ params: { id } }: { params: { id: string } }) {
+export default function Meme({ params: { id } }: { params: { id: string } }) {
   const [memeData, setMemeData] = useState<Meme>();
 
   const fetchMemeData = async () => {
-    const meme = await getMemeDetail({ id });
+    const res = await import('@/app/api/meme/[id]/route');
+    const req = new Request(`${process.env.NEXT_PUBLIC_URL}/meme/${id}`, { method: 'GET' });
+    const params = { id };
+    const meme = await (await res.GET(req, { params })).json();
     setMemeData(meme);
   };
 
@@ -29,7 +31,11 @@ export default async function Meme({ params: { id } }: { params: { id: string } 
   }, []);
 
   if (memeData === undefined) {
-    return <Loading />;
+    return (
+      <div className="grid justify-items-center">
+        <Loading />
+      </div>
+    );
   }
 
   return (
