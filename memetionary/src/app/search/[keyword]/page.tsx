@@ -8,8 +8,6 @@ import Pagination from '@/components/Pagination';
 import { useRouter, useParams } from 'next/navigation';
 import { ChangeEvent, KeyboardEvent, useEffect, useState } from 'react';
 
-export const dynamic = 'force-dynamic';
-
 export default function SearchResultPage() {
   const router = useRouter();
   const { keyword } = useParams<{ keyword: string }>();
@@ -29,13 +27,19 @@ export default function SearchResultPage() {
     setValue(target.value);
   };
 
+  const fetchPageListData = async () => {
+    await axios
+      .get(`${process.env.NEXT_PUBLIC_URL}/meme/list?pageNo=${pageNo}&keyword=${searchKeyword}`)
+      .then(({ data }) => {
+        const { data: result, pagination } = data;
+        setResultMemeList(result);
+        setLastPageNo(pagination.lastPageNo);
+        console.log(pagination);
+      });
+  };
+
   useEffect(() => {
-    axios.get(`${process.env.NEXT_PUBLIC_URL}/meme/list?pageNo=${pageNo}&keyword=${searchKeyword}`).then(({ data }) => {
-      const { data: result, pagination } = data;
-      setResultMemeList(result);
-      setLastPageNo(pagination.lastPageNo);
-      console.log(pagination);
-    });
+    fetchPageListData();
   }, [pageNo, searchKeyword]);
 
   return (

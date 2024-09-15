@@ -4,8 +4,6 @@ import Input from '@/components/Input';
 import { useRouter } from 'next/navigation';
 import { ChangeEvent, KeyboardEvent, useState } from 'react';
 
-export const dynamic = 'force-dynamic';
-
 export default function Search() {
   const router = useRouter();
   const [value, setValue] = useState<string>('');
