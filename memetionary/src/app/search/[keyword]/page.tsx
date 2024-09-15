@@ -8,6 +8,8 @@ import Pagination from '@/components/Pagination';
 import { useRouter, useParams } from 'next/navigation';
 import { ChangeEvent, KeyboardEvent, useEffect, useState } from 'react';
 
+export const dynamic = 'force-dynamic';
+
 export default function SearchResultPage() {
   const router = useRouter();
   const { keyword } = useParams<{ keyword: string }>();
