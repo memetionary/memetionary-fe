@@ -1,5 +1,6 @@
 import { type Question } from '@/app/api/question/data';
 import { IconX, IconCircle } from '@/assets/icons';
+import Image from 'next/image';
 
 type QuestionProps = {
   selectedAnswer: number;
@@ -14,6 +15,7 @@ export default function Question({ ...props }: QuestionProps) {
       <div className="flex w-full flex-col gap-2 rounded bg-white p-5 text-xl font-semibold">
         <span>{`${props.no < 9 ? 0 : ''}${props.no}.`}</span>
         <h2>{props.question}</h2>
+        {props.imageUrl && <Image src={props.imageUrl} alt="question image" />}
       </div>
       {props.choices.map(({ no, text }) => {
         const isSelected = props.selectedAnswer === no;
