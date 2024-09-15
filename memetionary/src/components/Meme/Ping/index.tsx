@@ -13,7 +13,7 @@ export default function Ping({ ...props }: Props) {
           <span className="font-bold">{'밈셔너리'}</span>
           <span className="text-gray-400">{'@memetionary'}</span>
         </div>
-        <div>{props.content}</div>
+        <div className="whitespace-pre-wrap">{props.content}</div>
       </div>
     </div>
   );

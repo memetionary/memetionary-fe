@@ -1,18 +1,15 @@
-import Tag from '@/components/Meme/TagList/Tag';
+import Tag, { tagStyle } from '@/components/Meme/TagList/Tag';
 
 export interface TagListProps {
-  list: {
-    type: 'info' | 'danger';
-    value: string;
-  }[];
+  list: { name: string; color: keyof typeof tagStyle }[];
 }
 
 export default function TagList({ ...props }: TagListProps) {
   return (
     <div className="flex flex-wrap gap-1">
-      {props.list.map((e) => (
-        <Tag key={e.value} isDanger={e.type === 'danger'}>
-          {e.value}
+      {props.list.map(({ name, color }) => (
+        <Tag key={name} color={color}>
+          {name}
         </Tag>
       ))}
     </div>

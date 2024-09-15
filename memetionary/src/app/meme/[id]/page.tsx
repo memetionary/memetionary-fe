@@ -22,15 +22,15 @@ export default async function Meme({ params: { id } }: { params: { id: string } 
           contents={{ title: meme.title, text: meme.description || '', imageUrl: meme.image }}
         />
       </div>
-      {meme.image && <Thumbnail src={meme.image} title={meme.title} size="lg" />}
+      {/* {meme.image && <Thumbnail src={meme.image} title={meme.title} size="lg" />} */}
       <Description title={meme.title} content={meme.description} />
-      {meme.exmapleType === 'conversation' ? <Conversation content={meme.example} /> : <Ping content={meme.example} />}
+      {meme.exampleType === 'conversation' ? <Conversation content={meme.example} /> : <Ping content={meme.example} />}
       {meme.tags && <TagList list={meme.tags} />}
       <div className="flex flex-wrap items-end justify-between gap-2">
-        <FooterDetail view={meme.view} lastUpdate={new Date(meme.lastUpdate)} />
+        <FooterDetail view={meme.view} lastUpdate={meme.lastUpdate} />
         <DetailAction contents={{ title: meme.title, text: meme.description || '', imageUrl: meme.image }} />
       </div>
-      {/* <Evaluation {...meme.evaluation} /> */}
+      <Evaluation {...meme.evaluation} />
     </>
   );
 }
