@@ -4,7 +4,7 @@ export const getMemeDetail = async ({ id }: { id: string }) => {
   try {
     // axios.default.baseUrl 합치기
     // status 500일때 처리 필요
-    const { data } = await axios.get(`${process.env.NEXT_PUBLIC_URL}/meme/${id}`);
+    const { data } = await axios.get(`https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}/api/meme/${id}`);
     return data;
   } catch (error) {
     throw error;
@@ -13,7 +13,7 @@ export const getMemeDetail = async ({ id }: { id: string }) => {
 
 export const getRandomMemeId = async () => {
   try {
-    const { data } = await axios.get(`${process.env.NEXT_PUBLIC_URL}/meme/random`);
+    const { data } = await axios.get(`https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}/api/meme/random`);
     return data;
   } catch (error) {
     throw error;

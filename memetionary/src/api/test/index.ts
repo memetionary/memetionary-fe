@@ -10,7 +10,7 @@ export interface GetTestInfoResponse {
 
 export const getTestCount = async ({ id }: { id: number }): Promise<GetTestInfoResponse> => {
   try {
-    const { data } = await axios.get(`${process.env.NEXT_PUBLIC_URL}/test/${id}`);
+    const { data } = await axios.get(`https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}/api/test/${id}`);
     return data;
   } catch (error) {
     throw error;
@@ -24,7 +24,9 @@ interface PostTestResponese {
 
 export const postTest = async ({ id, answer }: { id: number; answer: number[] }): Promise<PostTestResponese> => {
   try {
-    const { data } = await axios.post(`${process.env.NEXT_PUBLIC_URL}/test/${id}`, { answer });
+    const { data } = await axios.post(`https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}/api/test/${id}`, {
+      answer,
+    });
     return data;
   } catch (error) {
     throw error;
@@ -33,7 +35,7 @@ export const postTest = async ({ id, answer }: { id: number; answer: number[] })
 
 export const postShareCount = async ({ id }: { id: number }) => {
   try {
-    const { data } = await axios.post(`${process.env.NEXT_PUBLIC_URL}/test/share/${id}`);
+    const { data } = await axios.post(`https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}/api/test/share/${id}`);
     return data;
   } catch (error) {
     throw error;

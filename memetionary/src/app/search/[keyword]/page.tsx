@@ -33,7 +33,9 @@ export default function SearchResultPage() {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`${process.env.NEXT_PUBLIC_URL}/meme/list?pageNo=${pageNo}&keyword=${searchKeyword}`)
+      .get(
+        `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}/api/meme/list?pageNo=${pageNo}&keyword=${searchKeyword}`,
+      )
       .then(({ data }) => {
         const { data: result, pagination } = data;
         setResultMemeList(result);

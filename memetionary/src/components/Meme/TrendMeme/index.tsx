@@ -4,8 +4,8 @@ import Link from 'next/link';
 const TITLE_TEXT = '요즘 뜨는 밈';
 
 const getTrendMemeList = async (): Promise<{ data: Meme[] }> => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/meme/trend`);
-  if (!res.ok) throw new Error('Failed to fetch data');
+  const res = await fetch(`https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}/api/meme/trend`);
+  if (!res.ok) throw new Error('Failed to fetch data!!!');
   return res.json();
 };
 
